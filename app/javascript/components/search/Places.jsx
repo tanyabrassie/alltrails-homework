@@ -12,9 +12,6 @@ const ListContainer = styled(Flex)`
 `;
 
 const Places = (props) => {
-
-  console.log('results', props.searchResults);
-
   return(
     <ListContainer p={3}>
       {props.searchResults && props.searchResults.map((place) => <Card key={place.id} place={place}/>)}

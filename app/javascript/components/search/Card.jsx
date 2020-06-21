@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Flex, Box} from 'rebass';
+import {Flex} from 'rebass';
 import styled from 'styled-components';
 import {useState, useEffect} from 'react';
 import Thumbnail from './Thumbnail';
@@ -10,12 +10,12 @@ const Container = styled(Flex)`
   padding: ${props => props.theme.space[4]}px;
   background-color: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.space[2]}px;
-  color: ${props => props.theme.colors.gray2};
+  color: ${props => props.theme.colors.mediumGray};
 `;
 
 const Title = styled.strong`
   font-weight: bold;
-  font-family: Proxima Nova,Arial,sans-serif;
+  font-family: ${props => props.theme.fonts.proxima};
   font-size: 15px;
   letter-spacing: .5px;
 `;

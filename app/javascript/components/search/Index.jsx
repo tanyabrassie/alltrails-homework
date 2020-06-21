@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Navbar from '../Navbar';
-import {Flex} from 'rebass';
+import {Flex, Box} from 'rebass';
 import Map from './Map';
 import Places from './Places';
 import {useEffect} from 'react';
@@ -34,7 +34,7 @@ const Search = () => {
   return(
     <Container>
       <Navbar>
-        <SearchInput searchTerm={searchTerm} setTerm={updateSearchTerm}/>
+        <SearchInput searchTerm={searchTerm} updateSearchTerm={updateSearchTerm}/>
       </Navbar>
       <Flex width={1}>
         <Places 

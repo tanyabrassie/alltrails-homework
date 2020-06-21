@@ -11,6 +11,7 @@ const NavContainer = styled(Flex)`
   position: relative;
   box-shadow: 0px 1px 5px 0px #d9d9d97d;
   padding: ${props => props.theme.space[3]}px ${props => props.theme.space[5]}px;
+  justify-content: space-between;
 `;
 
 const Navbar = (props) => {
