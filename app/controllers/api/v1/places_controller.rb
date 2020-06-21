@@ -12,7 +12,7 @@ class Api::V1::PlacesController < ActionController::API
     name = params[:name] ? name_prefix + params[:name] : ''
 
     radius_prefix = '&radius='
-    radius_default = radius_prefix + '1000'
+    radius_default = radius_prefix + '1500'
     radius = params[:radius] ? radius_prefix + params[:radius] : radius_default
     
     type = '&type=restaurant'
