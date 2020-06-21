@@ -6,46 +6,44 @@ import Places from './Places';
 import {useEffect} from 'react';
 import styled from 'styled-components';
 import {useState} from 'react';
+import SearchInput from './SearchInput';
 
 const Container = styled.div`
   width: 100%;
 `;
 
-const MapContainer = styled.div`
-`;
-
 const Search = () => {
-
   const [searchResults, updateSearchResults] = useState([]);
-  // store selected point in state
+  const [searchTerm, updateSearchTerm] = useState(null);
+  const [mapCenter, updateMapCenter] = useState(null);
 
-  const fetchPlaces = async (location) => {
-    const response = await fetch(`/api/v1/search/?location=${location}`);
-    const json = await response.json();
-    const results = json.results;
-
-    updateSearchResults(results);
+  console.log('rerendering');
+  
+  const fetchPlaces = async () => {
+    const base_url = `/api/v1/places/nearby_places/?location=${mapCenter}`;
+    const url = searchTerm ? base_url + `&name=${searchTerm}` : base_url;
+    const response = await fetch(url);
+    const json = await response.json(); 
+    updateSearchResults(json.results);
   };
 
   useEffect(() => {
-    console.log('use effect');
-    console.log(searchResults);
-  }, [searchResults]);
+    fetchPlaces();
+  }, [mapCenter, searchTerm]);
 
   return(
     <Container>
-      <Navbar/>
+      <Navbar>
+        <SearchInput searchTerm={searchTerm} setTerm={updateSearchTerm}/>
+      </Navbar>
       <Flex width={1}>
         <Places 
           searchResults={searchResults}
-          fetchPlaces={fetchPlaces}
         />
-        <MapContainer>
-          <Map 
-            searchResults={searchResults}
-            fetchPlaces={fetchPlaces}
-          />
-        </MapContainer>
+        <Map 
+          updateMapCenter={updateMapCenter}
+          searchResults={searchResults}
+        />
       </Flex>
     </Container>
   );
