@@ -13,11 +13,13 @@ const NavContainer = styled(Flex)`
   padding: ${props => props.theme.space[3]}px ${props => props.theme.space[5]}px;
 `;
 
-const Navbar = () => {
+const Navbar = (props) => {
   return(
     <NavContainer>
       <Image src={Logo}/>
-      at Lunch
+      <div>
+        {props.children}
+      </div>
     </NavContainer>
   );
 };
