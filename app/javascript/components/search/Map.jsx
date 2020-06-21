@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useRef} from 'react';
+import {useRef, useEffect} from 'react';
 import { Map as GoogleMap, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 
 const containerStyles = {
@@ -10,21 +10,20 @@ const containerStyles = {
 
 const Map = (props) => {
   const mapsRef = useRef(null);
+
+  const getMapCenter = () => {
+    const center = mapsRef.current.map.getCenter();
+    const latLng = center.lat().toString() + ',' + center.lng().toString();
+    return latLng;  
+  };
   
   const onDrag = () => {
     props.updateMapCenter(getMapCenter());
   };
 
-  const onReady = () => {
-    console.log('ready');
-  };
-
-  const getMapCenter = () => {
-    const center = mapsRef.current.map.getCenter();
-    const latLng = center.lat().toString() + ',' + center.lng().toString();
-
-    return latLng;  
-  };
+  useEffect(() => {
+    props.updateMapCenter(getMapCenter());
+  }, [mapsRef]);
 
   return(
     <GoogleMap
@@ -33,7 +32,6 @@ const Map = (props) => {
       zoom={14}
       mapTypeControl={false}
       containerStyle={containerStyles}
-      onReady={onReady}
       onDragend={onDrag}
       initialCenter={{
         lat: 37.799944,
