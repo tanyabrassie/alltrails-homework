@@ -1,12 +1,27 @@
 class Api::V1::SearchController < ActionController::API 
-  include HTTParty 
-    # 'AIzaSyDpEr8NpgU_ERTJw6tm1nmGrpUZozM-oQE'
-  @@basic_url = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?'
+  include HTTParty
 
+  @@nearby_search_base = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
+  @@api_key = '&key=AIzaSyDpEr8NpgU_ERTJw6tm1nmGrpUZozM-oQE'
+
+  @@location_param = 'location='
+  @@radius = '&radius=1000'
+  @@type = '&type=restaurant'
+  
   def index
-    puts params[:location]
-    response = self.class.get(@@basic_url + 'input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyDpEr8NpgU_ERTJw6tm1nmGrpUZozM-oQE')
+    location = @@location_param + params[:location]
+
+    url = @@nearby_search_base + 
+      location +
+      @@radius +
+      '&name=pizza' + 
+      @@type +
+      @@api_key
+    
+    response = self.class.get(url)
+
     puts response
     render json: response.body
   end
 end
+

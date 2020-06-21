@@ -8,10 +8,13 @@ const ListContainer = styled(Flex)`
   background-color: ${props => props.theme.colors.gray1};
 `;
 
-const Places = () => {
+const Places = (props) => {
+
+  console.log('results', props.searchResults);
+
   return(
     <ListContainer>
-      places
+      {props.searchResults && props.searchResults.map((place) => place.name)}
     </ListContainer>
   );
 };

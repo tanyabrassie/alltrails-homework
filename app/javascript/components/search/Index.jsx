@@ -22,23 +22,24 @@ const Search = () => {
 
 
   const fetchPlaces = async (location) => {
-    // fetch places 
-    console.log('location', location);
-    const result = await fetch(`/api/v1/search/?location:${location}`);
-    const json = await result.json();
-    console.log('json', json.candidates);
+    const response = await fetch(`/api/v1/search/?location=${location}`);
+    const json = await response.json();
+    const results = json.results;
+
+    updateSearchResults(results);
   };
 
   useEffect(() => {
     console.log('use effect');
-  });
+    console.log(searchResults);
+  }, [searchResults]);
 
   return(
     <Container>
       <Navbar/>
       <Flex width={1}>
         <Places 
-          searcResults={searchResults}
+          searchResults={searchResults}
           fetchPlaces={fetchPlaces}
         />
         <MapContainer>

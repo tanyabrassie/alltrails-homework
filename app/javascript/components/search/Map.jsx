@@ -8,31 +8,23 @@ const mapStyles = {
 };
 
 const Map = (props) => {
-
-  // when maps is loaded, find the bounds, pass them to the search function
-  // when map is dragged, find the bounds, pass them to the search function
   const mapsRef = useRef(null);
   
   const onDrag = () => {
-    console.log('dragging map!');
-    console.log(getLocationBiasBounds());
-    // when map is dragged, find the bounds, pass them to the search function
-    const locationBias = getLocationBiasBounds();
-    props.fetchPlaces(locationBias);
+    console.log('dragging');
+    props.fetchPlaces(getMapCenter());
   };
 
   const onReady = () => {
     console.log('ready');
   };
 
-  const getLocationBiasBounds = () => {
-    const bounds = mapsRef.current.map.getBounds();
-    const formattedBounds = bounds.getSouthWest().lat().toString() + ',' + bounds.getSouthWest().lng().toString() + '|' +
-      bounds.getNorthEast().lat().toString() + ',' + bounds.getNorthEast().lng().toString();
+  const getMapCenter = () => {
+    const center = mapsRef.current.map.getCenter();
+    const latLng = center.lat().toString() + ',' + center.lng().toString();
 
-    return formattedBounds;  
+    return latLng;  
   };
-
 
   return(
     <GoogleMap
