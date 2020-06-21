@@ -2,9 +2,9 @@ import * as React from 'react';
 import {useRef} from 'react';
 import { Map as GoogleMap, GoogleApiWrapper } from 'google-maps-react';
 
-const mapStyles = {
-  width: '100%',
-  height: '100%',
+
+const containerStyles = {
+  height: 'calc(100vh - 65px)',
 };
 
 const Map = (props) => {
@@ -31,9 +31,10 @@ const Map = (props) => {
       ref={mapsRef}
       google={props.google}
       zoom={15}
+      mapTypeControl={false}
+      containerStyle={containerStyles}
       onReady={onReady}
       onDragend={onDrag}
-      style={mapStyles}
       initialCenter={{
         lat: 37.799944,
         lng: -122.4328033

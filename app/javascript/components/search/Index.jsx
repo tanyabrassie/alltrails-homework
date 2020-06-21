@@ -12,14 +12,12 @@ const Container = styled.div`
 `;
 
 const MapContainer = styled.div`
-  border: 1px solid red;
 `;
 
 const Search = () => {
 
   const [searchResults, updateSearchResults] = useState([]);
   // store selected point in state
-
 
   const fetchPlaces = async (location) => {
     const response = await fetch(`/api/v1/search/?location=${location}`);
