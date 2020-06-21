@@ -38,10 +38,15 @@ const SearchInput = ({updateSearchTerm}) => {
     updateInputState(e.target.value);
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    updateSearchTerm(inputState);
+  };
+  
   return(
-    <div>
-      <Label for="restaurant-search">
-        Search for a Restaurant
+    <form onSubmit={onSubmit}>
+      <Label htmlFor="restaurant-search">
+        Search for a restaurant
       </Label>
       <StyledInput
         name="restaurant-search"
@@ -49,10 +54,9 @@ const SearchInput = ({updateSearchTerm}) => {
         onChange={handleChange}
         value={inputState}
         placeholder={'Search for a restaurant'}
-        onSubmit={updateSearchTerm(inputState)}
         id={'restaurant-search'}
       />
-    </div>  
+    </form>  
   );
 };
 
