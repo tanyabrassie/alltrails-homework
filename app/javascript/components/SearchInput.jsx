@@ -39,6 +39,10 @@ const SearchInput = ({updateSearchTerm}) => {
 
   const handleChange = (e) => {
     updateInputState(e.target.value);
+
+    if (e.target.value === '') {
+      updateSearchTerm(null);
+    }
   };
 
   const onSubmit = (e) => {
