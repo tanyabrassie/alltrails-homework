@@ -1,5 +1,5 @@
 import * as React from 'react';
-import starIcon from '../../../../assets/images/star.svg';
+import starIcon from '../../../assets/images/star.svg';
 import styled from 'styled-components';
 
 const Star = styled.img`

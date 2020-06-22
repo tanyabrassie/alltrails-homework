@@ -2,6 +2,9 @@ import * as React from 'react';
 import {useRef, useEffect} from 'react';
 import { Map as GoogleMap, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import {useMediaQuery} from 'react-responsive';
+import Card from '../Card/Index';
+import {ThemeProvider} from 'styled-components';
+import {theme} from '../../theme';
 
 const containerStyles = {
   height: 'calc(100vh - 65px)',
@@ -26,6 +29,11 @@ const Map = (props) => {
   
   const onDrag = () => {
     props.updateMapCenter(getMapCenter());
+    props.updateActivePlace(null);
+  };
+
+  const onMapClicked = () => {
+    props.updateActivePlace(null);
   };
 
   useEffect(() => {
@@ -36,6 +44,7 @@ const Map = (props) => {
     <GoogleMap
       ref={mapsRef}
       google={props.google}
+      onClick={onMapClicked}
       zoom={14}
       maxZoom={15}
       streetViewControl={false}
@@ -51,18 +60,24 @@ const Map = (props) => {
       {props.searchResults && props.searchResults.map((result) => {
         return (
           <Marker
+            onClick={() => props.updateActivePlace(result)}
             key={result.place_id}
             name={result.name}
             position={result.geometry.location}
+
           >
-            <InfoWindow
-              visible={true}
-            >
-              <div>hi</div>
-            </InfoWindow>
           </Marker>
         );
       })}
+
+      <InfoWindow
+        visible={!!props.activePlace}
+        position={props.activePlace ? props.activePlace.geometry.location : null}
+      >
+        <ThemeProvider theme={theme}>
+          {props.activePlace && <Card isInfoWindow theme={props.theme} place={props.activePlace}/>}
+        </ThemeProvider>
+      </InfoWindow>
     </GoogleMap>
   );
 };

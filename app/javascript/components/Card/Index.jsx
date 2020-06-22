@@ -2,24 +2,24 @@ import * as React from 'react';
 import styled from 'styled-components';
 import {useState, useEffect} from 'react';
 import Thumbnail from './Thumbnail';
-import Spinner from '../../Spinner';
+import Spinner from '../Spinner';
 import StarRating from './StarRating';
 
 const Container = styled.div`
-  box-shadow: 0 0 0 1px #e6e6e6;
+  box-shadow: ${props => props.isInfoWindow ? 'none' : '0 0 0 1px #e6e6e6'};
   margin: ${props => props.theme.space[1]}px 0;
   padding: ${props => props.theme.space[4]}px;
   background-color: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.space[2]}px;
   color: ${props => props.theme.colors.mediumGray};
   font-family: ${props => props.theme.fonts.proxima};
-  border: 2px solid transparent;
+  border: ${props => props.isInfoWindow ? 'none' : '2px solid transparent'};
   display: flex;
   cursor: pointer;
   transition: border .5s;
 
   &:hover {
-    border: 2px solid ${props => props.theme.colors.green};
+    border: ${props => props.isInfoWindow ? 'none' : `2px solid ${props.theme.colors.green}`};
   }
 `;
 
@@ -50,7 +50,7 @@ const Image = styled.div`
   flex-shrink: 0;
 `;
 
-const Card = ({place, updateActivePlace}) => {
+const Card = ({place, isInfoWindow}) => {
   const [loadingImage, toggleLoading] = useState(false);
   const [placePhoto, setPlacePhoto] = useState(null);
 
@@ -69,14 +69,16 @@ const Card = ({place, updateActivePlace}) => {
   const hours = place.opening_hours && place.opening_hours.open_now ? 'Open Now' : 'Closed';
 
   return(
-    <Container onClick={() => updateActivePlace(place)}>
-      <Image>
-        {loadingImage ? (
-          <Spinner/>
-        ):( 
-          <Thumbnail image={placePhoto}/>
-        )}
-      </Image>
+    <Container isInfoWindow={isInfoWindow}>
+      {!isInfoWindow &&
+        <Image>
+          {loadingImage ? (
+            <Spinner/>
+          ):( 
+            <Thumbnail image={placePhoto}/>
+          )}
+        </Image>
+      }
       <Content>
         <Title>{place.name}</Title>
         <DetailsRow>

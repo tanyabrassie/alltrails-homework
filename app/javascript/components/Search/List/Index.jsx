@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Flex} from 'rebass';
 import styled from 'styled-components';
-import Card from './Card';
+import ListingCard from './ListingCard';
 import {breakpoints} from '../../../theme';
 
 const ListContainer = styled(Flex)`
@@ -19,7 +19,7 @@ const ListContainer = styled(Flex)`
 const Places = (props) => {
   return(
     <ListContainer p={3}>
-      {props.searchResults && props.searchResults.map((place) => <Card updateActivePlace={props.updateActivePlace} key={place.id} place={place}/>)}
+      {props.searchResults && props.searchResults.map((place) => <ListingCard updateActivePlace={props.updateActivePlace} key={place.id} place={place}/>)}
     </ListContainer>
   );
 };

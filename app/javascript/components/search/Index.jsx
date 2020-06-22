@@ -53,7 +53,7 @@ const Search = () => {
   useEffect(() => {
     async function fetchPlaces() {
       const base_url = `/api/v1/places/nearby_places/?location=${mapCenter}`;
-      const url = searchTerm ? base_url + `&name=${searchTerm}` : base_url;
+      const url = searchTerm ? `${base_url}&name=${searchTerm}` : base_url;
       const response = await fetch(url);
       const json = await response.json(); 
       updateSearchResults(json.results);
@@ -82,6 +82,7 @@ const Search = () => {
           />
           <Map 
             activePlace={activePlace}
+            updateActivePlace={updateActivePlace}
             updateMapCenter={updateMapCenter}
             searchResults={searchResults}
           />
