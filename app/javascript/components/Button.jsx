@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  background-color: ${props => props.theme.colors.green};
-  color: ${props => props.theme.colors.white};
+  background-color: ${props => props.secondary ? props.theme.colors.white : props.theme.colors.green};
+  color: ${props => props.secondary ? props.theme.colors.mediumGray : props.theme.colors.white};
   border-radius: 5px;
-  border: none;
+  border: ${props => props.secondary ? '1px solid #e2e2e2' : 'none'};
   outline: none;
+  height: ${props => props.small ? '30px' : '45px'};
   cursor: pointer;
-  box-shadow: 1px 0px 9px 4px #918d8d7d;
   transition: background-color .5s;
   font-family: ${props => props.theme.fonts.promixa};
-  font-size: 15px;
+  font-size: ${props => props.small ? '11px' : '15px'};
   letter-spacing: .5px;
-  font-weight: bold;
+  padding: 0 ${props => props.theme.space[2]}px;
+  font-weight: ${props => props.small ? '100' : '800'};
   
   &:hover {
-    background-color: ${props => props.theme.colors.lightGreen};
+    background-color: ${props => props.secondary ? props.theme.colors.lightestGray : props.theme.colors.lightGreen};
   }
 `;
 
