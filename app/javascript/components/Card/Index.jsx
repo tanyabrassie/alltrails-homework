@@ -56,12 +56,15 @@ const Card = ({place, isInfoWindow}) => {
 
   useEffect(() => {
     async function fetchData() {
-      const photoReference = place.photos[0].photo_reference;
-      toggleLoading(true);
-      const result = await fetch(`api/v1/places/photos/?photo_reference=${photoReference}`);
-      const image = await result.json();
-      toggleLoading(false);
-      setPlacePhoto(image.base64Image);
+      const photoReference = place.photos ? place.photos[0].photo_reference : null;
+
+      if (photoReference) {
+        toggleLoading(true);
+        const result = await fetch(`api/v1/places/photos/?photo_reference=${photoReference}`);
+        const image = await result.json();
+        toggleLoading(false);
+        setPlacePhoto(image.base64Image);
+      }
     }
     fetchData();
   }, [toggleLoading, setPlacePhoto]);
