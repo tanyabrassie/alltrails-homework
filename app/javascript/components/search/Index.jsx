@@ -21,6 +21,7 @@ const Search = () => {
   const [searchResults, updateSearchResults] = useState([]);
   const [searchTerm, updateSearchTerm] = useState(null);
   const [mapCenter, updateMapCenter] = useState(null);
+  const [activePlace, updateActivePlace] = useState(null);
   
   const fetchPlaces = async () => {
     const base_url = `/api/v1/places/nearby_places/?location=${mapCenter}`;
@@ -30,6 +31,8 @@ const Search = () => {
     updateSearchResults(json.results);
   };
 
+  console.log('rerendering');
+  
   useEffect(() => {
     fetchPlaces();
   }, [mapCenter, searchTerm]);
@@ -47,8 +50,10 @@ const Search = () => {
       <Flex width={1}>
         <List 
           searchResults={searchResults}
+          updateActivePlace={updateActivePlace}
         />
         <Map 
+          activePlace={activePlace}
           updateMapCenter={updateMapCenter}
           searchResults={searchResults}
         />
