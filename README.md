@@ -1,6 +1,6 @@
 # All Trails Restaurant Finder App!
 
-To start this project for the first time run the following commands:
+To start this project for the first time run the following commands in this order:
 
 - `bundle install`
 - `yarn install`
