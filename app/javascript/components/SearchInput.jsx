@@ -15,7 +15,7 @@ const StyledInput = styled.input`
     font-family: ${props => props.theme.fonts.proxima};
     color: ${props => props.theme.colors.mediumGray};
     font-size: 11px;
-    font-weight: bold;
+    letter-spacing: .5px;
   }
 `;
 

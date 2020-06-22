@@ -16,7 +16,7 @@ const Container = styled.div`
   border: 2px solid transparent;
   display: flex;
   cursor: pointer;
-  transition: border .2s;
+  transition: border .5s;
 
   &:hover {
     border: 2px solid ${props => props.theme.colors.green};

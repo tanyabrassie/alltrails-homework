@@ -45,7 +45,12 @@ const LogoContainer = styled(Flex)`
 
   @media screen and (min-width: ${breakpoints.phone}) {
     padding-bottom: 0;
+    flex: 0 1 auto;
   }
+`;
+
+const ChildrenContainer = styled.div`
+  flex: 1;
 `;
 
 const Navbar = (props) => {
@@ -56,9 +61,9 @@ const Navbar = (props) => {
         <AtLunch>at Lunch</AtLunch>
       </LogoContainer>
       
-      <div>
+      <ChildrenContainer>
         {props.children}
-      </div>
+      </ChildrenContainer>
     </NavContainer>
   );
 };

@@ -6,22 +6,30 @@ import List from './List/Index';
 import {useEffect} from 'react';
 import styled from 'styled-components';
 import {useState} from 'react';
-import SearchInput from './SearchInput';
+import SearchInput from '../SearchInput';
 import {Desktop, Mobile} from '../../lib/Responsive';
 import Button from '../Button';
+import Filter from '../Filter';
 
 const Container = styled.div`
   width: 100%;
+`;
+
+const FilterContainer = styled.div`
+  margin-right: ${props => props.theme.space[2]}px;
 `;
 
 const SearchContainer = styled.div`
   width: 100%;
   max-width: 300px;
   margin-left: auto;
+  display: flex;
 `;
 
 const FloatingButton = styled(Button)`
   position: fixed;
+  box-shadow: 1px 0px 9px 4px #918d8d7d;
+
   right: 0;
   left: 0;
   bottom: 50px;
@@ -53,6 +61,7 @@ const Search = () => {
     <Container>
       <Navbar>
         <SearchContainer>
+          <FilterContainer><Filter/></FilterContainer>
           <SearchInput 
             searchTerm={searchTerm} 
             updateSearchTerm={updateSearchTerm}
@@ -92,7 +101,7 @@ const Search = () => {
           <FloatingButton onClick={() => toggleMap(!showMap)}>
             {showMap ? 'List' : 'Map'}
           </FloatingButton>
-        </Mobile>        
+        </Mobile>
       </Flex>
     </Container>
   );
