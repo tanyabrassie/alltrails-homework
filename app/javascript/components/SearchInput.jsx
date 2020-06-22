@@ -5,7 +5,7 @@ import {useState} from 'react';
 const StyledInput = styled.input`
   border-radius: 5px;
   height: 30px;
-  border: 1px solid ${props => props.theme.colors.gray4};
+  border: 1px solid ${props => props.theme.colors.gray};
   box-shadow: 0px 1px 1px 0px #ebebeb;
   padding: 3px 15px;
   width: 100%;
