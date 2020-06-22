@@ -5,11 +5,11 @@ import {useState} from 'react';
 const StyledInput = styled.input`
   margin-left: auto;
   border-radius: 5px;
-  height: 25px;
-  width: 300px;
+  height: 30px;
   border: 1px solid ${props => props.theme.colors.gray4};
   box-shadow: 0px 1px 1px 0px #ebebeb;
   padding: 3px 15px;
+  width: 100%;
 
   &::placeholder {
     font-family: ${props => props.theme.fonts.proxima};
@@ -31,6 +31,10 @@ const Label = styled.label`
   width: 1px;
 `;
 
+const Form = styled.form`
+  width: 100%;
+`;
+
 const SearchInput = ({updateSearchTerm}) => {
   const [inputState, updateInputState] = useState('');
 
@@ -44,7 +48,7 @@ const SearchInput = ({updateSearchTerm}) => {
   };
   
   return(
-    <form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit}>
       <Label htmlFor="restaurant-search">
         Search for a restaurant
       </Label>
@@ -56,7 +60,7 @@ const SearchInput = ({updateSearchTerm}) => {
         placeholder={'Search for a restaurant'}
         id={'restaurant-search'}
       />
-    </form>  
+    </Form>  
   );
 };
 

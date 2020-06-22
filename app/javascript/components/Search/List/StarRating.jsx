@@ -9,6 +9,7 @@ const Star = styled.img`
 
 const StarRating = ({rating}) => {
   const roundedRating = Math.round(rating);
+  
   return (
     <>
       {[...Array(roundedRating)].map((_, index) => <Star key={index} src={starIcon}/>)}

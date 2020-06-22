@@ -12,6 +12,11 @@ const Container = styled.div`
   width: 100%;
 `;
 
+const SearchContainer = styled.div`
+  width: 100%;
+  min-width: 250px;
+`;
+
 const Search = () => {
   const [searchResults, updateSearchResults] = useState([]);
   const [searchTerm, updateSearchTerm] = useState(null);
@@ -32,9 +37,12 @@ const Search = () => {
   return(
     <Container>
       <Navbar>
-        <SearchInput 
-          searchTerm={searchTerm} 
-          updateSearchTerm={updateSearchTerm}/>
+        <SearchContainer>
+          <SearchInput 
+            searchTerm={searchTerm} 
+            updateSearchTerm={updateSearchTerm}
+          />
+        </SearchContainer>
       </Navbar>
       <Flex width={1}>
         <List 
