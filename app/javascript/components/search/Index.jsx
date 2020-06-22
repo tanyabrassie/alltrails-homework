@@ -94,6 +94,7 @@ const Search = () => {
               activePlace={activePlace}
               updateMapCenter={updateMapCenter}
               searchResults={searchResults}
+              updateActivePlace={updateActivePlace}
             /> 
           ) : (
             <List 
