@@ -51,6 +51,7 @@ const LogoContainer = styled(Flex)`
 
 const ChildrenContainer = styled.div`
   flex: 1;
+  width: 100%;
 `;
 
 const Navbar = (props) => {

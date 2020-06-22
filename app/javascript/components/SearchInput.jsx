@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {useState} from 'react';
 
 const StyledInput = styled.input`
-  margin-left: auto;
   border-radius: 5px;
   height: 30px;
   border: 1px solid ${props => props.theme.colors.gray4};

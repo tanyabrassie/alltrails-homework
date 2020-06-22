@@ -10,6 +10,7 @@ import SearchInput from '../SearchInput';
 import {Desktop, Mobile} from '../../lib/Responsive';
 import Button from '../Button';
 import Filter from '../Filter';
+import {breakpoints} from '../../theme';
 
 const Container = styled.div`
   width: 100%;
@@ -21,9 +22,13 @@ const FilterContainer = styled.div`
 
 const SearchContainer = styled.div`
   width: 100%;
-  max-width: 300px;
   margin-left: auto;
   display: flex;
+
+  @media screen and (min-width: ${breakpoints.phone}) {
+    max-width: 300px;
+    margin-left: auto;
+  }
 `;
 
 const FloatingButton = styled(Button)`
