@@ -6,14 +6,21 @@ import Spinner from '../../Spinner';
 import StarRating from './StarRating';
 
 const Container = styled.div`
-  box-shadow: inset 0 0 0 1px #e6e6e6;
+  box-shadow: 0 0 0 1px #e6e6e6;
   margin: ${props => props.theme.space[1]}px 0;
   padding: ${props => props.theme.space[4]}px;
   background-color: ${props => props.theme.colors.white};
   border-radius: ${props => props.theme.space[2]}px;
   color: ${props => props.theme.colors.mediumGray};
   font-family: ${props => props.theme.fonts.proxima};
+  border: 2px solid transparent;
   display: flex;
+  cursor: pointer;
+  transition: border .2s;
+
+  &:hover {
+    border: 2px solid ${props => props.theme.colors.green};
+  }
 `;
 
 const Title = styled.strong`
@@ -43,7 +50,7 @@ const Image = styled.div`
   flex-shrink: 0;
 `;
 
-const Card = ({place}) => {
+const Card = ({place, updateActivePlace}) => {
   const [loadingImage, toggleLoading] = useState(false);
   const [placePhoto, setPlacePhoto] = useState(null);
 
@@ -62,7 +69,7 @@ const Card = ({place}) => {
   const hours = place.opening_hours && place.opening_hours.open_now ? 'Open Now' : 'Closed';
 
   return(
-    <Container>
+    <Container onClick={() => updateActivePlace(place)}>
       <Image>
         {loadingImage ? (
           <Spinner/>

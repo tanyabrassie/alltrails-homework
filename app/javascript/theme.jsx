@@ -15,6 +15,7 @@ export const theme = {
     mediumGray: '#909090',
     gray3: '#787272',
     gray4: '#e2e2e2',
+    green: '#438a13',
   },
   space,
   fonts: {
