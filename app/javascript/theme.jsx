@@ -10,12 +10,13 @@ export const breakpoints = {
 export const theme = {
   colors: {
     white: '#ffffff',
-    gray1: '#f2f2f2',
+    lightestGray: '#f2f2f2',
     lightGray: '#d5d5d5',
     mediumGray: '#909090',
     gray3: '#787272',
     gray4: '#e2e2e2',
     green: '#438a13',
+    lightGreen: '#4d9c17',
   },
   space,
   fonts: {
