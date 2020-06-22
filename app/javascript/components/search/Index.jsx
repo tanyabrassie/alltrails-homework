@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Navbar from '../Navbar';
-import {Flex, Box} from 'rebass';
+import {Flex} from 'rebass';
 import Map from './Map';
-import Places from './Places';
+import List from './List/Index';
 import {useEffect} from 'react';
 import styled from 'styled-components';
 import {useState} from 'react';
@@ -16,8 +16,6 @@ const Search = () => {
   const [searchResults, updateSearchResults] = useState([]);
   const [searchTerm, updateSearchTerm] = useState(null);
   const [mapCenter, updateMapCenter] = useState(null);
-
-  console.log('rerendering');
   
   const fetchPlaces = async () => {
     const base_url = `/api/v1/places/nearby_places/?location=${mapCenter}`;
@@ -34,10 +32,12 @@ const Search = () => {
   return(
     <Container>
       <Navbar>
-        <SearchInput searchTerm={searchTerm} updateSearchTerm={updateSearchTerm}/>
+        <SearchInput 
+          searchTerm={searchTerm} 
+          updateSearchTerm={updateSearchTerm}/>
       </Navbar>
       <Flex width={1}>
-        <Places 
+        <List 
           searchResults={searchResults}
         />
         <Map 
