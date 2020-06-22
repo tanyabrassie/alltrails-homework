@@ -50,17 +50,17 @@ const Search = () => {
   const [activePlace, updateActivePlace] = useState(null);
   const [showMap, toggleMap] = useState(true);
   
-  const fetchPlaces = async () => {
-    const base_url = `/api/v1/places/nearby_places/?location=${mapCenter}`;
-    const url = searchTerm ? base_url + `&name=${searchTerm}` : base_url;
-    const response = await fetch(url);
-    const json = await response.json(); 
-    updateSearchResults(json.results);
-  };
-  
   useEffect(() => {
+    async function fetchPlaces() {
+      const base_url = `/api/v1/places/nearby_places/?location=${mapCenter}`;
+      const url = searchTerm ? base_url + `&name=${searchTerm}` : base_url;
+      const response = await fetch(url);
+      const json = await response.json(); 
+      updateSearchResults(json.results);
+    }
+
     fetchPlaces();
-  }, [mapCenter, searchTerm]);
+  }, [mapCenter, searchTerm, updateSearchResults]);
 
   return(
     <Container>

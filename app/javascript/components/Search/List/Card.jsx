@@ -64,7 +64,7 @@ const Card = ({place, updateActivePlace}) => {
       setPlacePhoto(image.base64Image);
     }
     fetchData();
-  }, []);
+  }, [toggleLoading, setPlacePhoto]);
 
   const hours = place.opening_hours && place.opening_hours.open_now ? 'Open Now' : 'Closed';
 
