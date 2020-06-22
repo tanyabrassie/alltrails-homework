@@ -30,6 +30,9 @@ const Map = (props) => {
       ref={mapsRef}
       google={props.google}
       zoom={14}
+      maxZoom={15}
+      streetViewControl={false}
+      fullscreenControl={false}
       mapTypeControl={false}
       containerStyle={containerStyles}
       onDragend={onDrag}
