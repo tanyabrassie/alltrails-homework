@@ -1,24 +1,16 @@
-# README
+# All Trails Restaurant Finder App!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To start this project for the first time:
 
-Things you may want to cover:
+Run `bundle install`
+Run `yarn install`
 
-* Ruby version
+Run `brew install postgresql` (to install postgres if not already installed)
+Run `brew services start postgresql` Start the database
 
-* System dependencies
+Run `createuser -P -d alltrails-homework` to create a new user called alltrails-homework
+Run `rails db:create` to create the database 
 
-* Configuration
+and finally...
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run `rails s` to start the project on localhost:3000
