@@ -73,11 +73,11 @@ const Card = ({place}) => {
       <Content>
         <Title>{place.name}</Title>
         <DetailsRow>
-          <StarRating rating={place.rating}/>&nbsp;({place.user_ratings_total})
+          {place.rating && <><StarRating rating={place.rating}/>&nbsp;</>}
+          {place.user_ratings_total && <>({place.user_ratings_total})</>}
         </DetailsRow>
         <DetailsRow>
-          {place.price_level && [...Array(place.price_level)].map(() => '$')}
-          &nbsp;&#8226;&nbsp;
+          {place.price_level && <>{[...Array(place.price_level)].map(() => '$')}&nbsp;&#8226;&nbsp;</>}
           <Hours>
             {hours}
           </Hours>
